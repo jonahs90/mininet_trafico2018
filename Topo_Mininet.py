@@ -26,6 +26,7 @@ from mininet.net import Mininet
 from mininet.node import Node
 from mininet.log import setLogLevel, info
 from mininet.cli import CLI
+from mininet.link import TCLink
 
 
 class LinuxRouter( Node ):
@@ -56,7 +57,7 @@ class NetworkTopo( Topo ):
 
 
         self.addLink( s1, router, intfName2='r0-eth1',
-                      params2={ 'ip' : defaultIP }, cls=TCLink ,**s1r0LinkParam )  # for clarity
+                      params2={ 'ip' : defaultIP }, cls='TCLink' ,**s1r0LinkParam )  # for clarity
         self.addLink( s2, router, intfName2='r0-eth2',
                       params2={ 'ip' : '172.16.0.1/12' } )
         self.addLink( s3, router, intfName2='r0-eth3',
