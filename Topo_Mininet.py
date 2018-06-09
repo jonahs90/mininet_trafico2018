@@ -67,6 +67,9 @@ class NetworkTopo( Topo ):
         self.addLink( s3, router, intfName2='r0-eth3',
                       params2={ 'ip' : defaultIP_3}, **linkopts_3 )
 
+        router.setIP(ip=defaultIP_2, intf='r0-eth2')
+        router.setIP(ip=defaultIP_3, intf='r0-eth3')  
+
         h1 = self.addHost( 'h1', ip='192.168.1.100/24',
                            defaultRoute='via 192.168.1.1' )
         h2 = self.addHost( 'h2', ip='172.16.0.100/12',
