@@ -56,8 +56,8 @@ class NetworkTopo( Topo ):
         s1r0LinkParam = {'bw':15}
 
 
-        self.addLink( s1, router, intfName2='r0-eth1',
-                      params2={ 'ip' : defaultIP }, link=TCLink ,**s1r0LinkParam )  # for clarity
+        self.addLink( s1, router, intfName2='r0-eth1', cls=TCLink,
+                      params2={ 'ip' : defaultIP , 'bw':15})  # for clarity
         self.addLink( s2, router, intfName2='r0-eth2',
                       params2={ 'ip' : '172.16.0.1/12' } )
         self.addLink( s3, router, intfName2='r0-eth3',
@@ -77,7 +77,7 @@ class NetworkTopo( Topo ):
 def run():
     "Test linux router"
     topo = NetworkTopo()
-    net = Mininet( topo=topo )  # controller is used by s1-s3
+    net = Mininet( topo=topo , link=TCLink)  # controller is used by s1-s3
     net.start()
     info( '*** Routing Table on Router:\n' )
     info( net[ 'r0' ].cmd( 'route' ) )
