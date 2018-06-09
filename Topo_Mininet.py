@@ -52,11 +52,11 @@ class NetworkTopo( Topo ):
 
         s1, s2, s3 = [ self.addSwitch( s ) for s in ( 's1', 's2', 's3' ) ]
 
-        s1r0LinkParam = {'bw':15}
+        # s1r0LinkParam = {'bw':15}
 
 
-        self.addLink( s1, router, intfName2='r0-eth1',
-                      params2={ 'ip' : defaultIP }, **s1r0LinkParam )  # for clarity
+        self.addLink( s1, router, intfName2='r0-eth1', bw= 15,
+                      params2={ 'ip' : defaultIP } )  # for clarity
         self.addLink( s2, router, intfName2='r0-eth2',
                       params2={ 'ip' : '172.16.0.1/12' } )
         self.addLink( s3, router, intfName2='r0-eth3',
