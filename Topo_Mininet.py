@@ -59,9 +59,9 @@ class NetworkTopo( Topo ):
         self.addLink( s1, router, intfName2='r0-eth1', cls=TCLink,
                       params2={ 'ip' : defaultIP , 'bw':15})  # for clarity
         self.addLink( s2, router, intfName2='r0-eth2', cls=TCLink,
-                      params2={ 'ip' : '172.16.0.1/12' } )
+                      params2={ 'ip' : '172.16.0.1/12', 'bw':30} )
         self.addLink( s3, router, intfName2='r0-eth3', cls=TCLink,
-                      params2={ 'ip' : '10.0.0.1/8' } )
+                      params2={ 'ip' : '10.0.0.1/8' ,  'bw':50} )
 
         h1 = self.addHost( 'h1', ip='192.168.1.100/24',
                            defaultRoute='via 192.168.1.1' )
