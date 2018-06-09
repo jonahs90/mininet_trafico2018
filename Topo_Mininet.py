@@ -60,11 +60,11 @@ class NetworkTopo( Topo ):
         linkopts_3 = dict(bw=50, delay='20ms', loss=0, use_htb=True)
 
         self.addLink( s1, router, intfName2='r0-eth1',
-                      params2={ 'ip' : defaultIP}, **linkopts)  # for clarity
+                      params2={ 'ip' : defaultIP},)  # for clarity
         self.addLink( s2, router, intfName2='r0-eth2',
-                      params2={ 'ip' : defaultIP_2}, **linkopts_2)
+                      params2={ 'ip' : defaultIP_2})
         self.addLink( s3, router, intfName2='r0-eth3',
-                      params2={ 'ip' : defaultIP_3}, **linkopts_3 )
+                      params2={ 'ip' : defaultIP_3})
 
         h1 = self.addHost( 'h1', ip='192.168.1.100/24',
                            defaultRoute='via 192.168.1.1' )
