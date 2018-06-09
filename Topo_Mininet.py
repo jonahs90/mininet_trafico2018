@@ -57,7 +57,7 @@ class NetworkTopo( Topo ):
 
 
         self.addLink( s1, router, intfName2='r0-eth1',
-                      params2={ 'ip' : defaultIP }, cls='TCLink' ,**s1r0LinkParam )  # for clarity
+                      params2={ 'ip' : defaultIP }, link=TCLink ,**s1r0LinkParam )  # for clarity
         self.addLink( s2, router, intfName2='r0-eth2',
                       params2={ 'ip' : '172.16.0.1/12' } )
         self.addLink( s3, router, intfName2='r0-eth3',
