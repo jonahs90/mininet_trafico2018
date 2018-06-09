@@ -51,13 +51,13 @@ class NetworkTopo( Topo ):
         defaultIP = '192.168.1.1/24'  # IP address for r0-eth1
         defaultIP_2 = '172.16.0.1/12' # IP address for r0-eth2
         defaultIP_3 = '10.0.0.1/8'  # IP address for r0-eth3
-        router = self.addNode( 'r0', cls=LinuxRouter, ip=defaultIP )
+        router = self.addNode( 'r0', cls=LinuxRouter)
 
         s1, s2, s3 = [ self.addSwitch( s ) for s in ( 's1', 's2', 's3' ) ]
 
         s1r0LinkParam = {'bw':15}
         linkopts = dict(bw=15, delay='2ms', loss=0, use_htb=True)
-        linkopts_2 = dict(bw=30, delay='15ms', loss=50, use_htb=True)
+        linkopts_2 = dict(bw=30, delay='15ms', loss=5, use_htb=True)
         linkopts_3 = dict(bw=50, delay='20ms', loss=0, use_htb=True)
 
         self.addLink( s1, router, intfName2='r0-eth1',
@@ -66,9 +66,6 @@ class NetworkTopo( Topo ):
                       params2={ 'ip' : defaultIP_2}, **linkopts_2)
         self.addLink( s3, router, intfName2='r0-eth3',
                       params2={ 'ip' : defaultIP_3}, **linkopts_3 )
-
-        router.setIP(ip=defaultIP_2, intf='r0-eth2')
-        router.setIP(ip=defaultIP_3, intf='r0-eth3')  
 
         h1 = self.addHost( 'h1', ip='192.168.1.100/24',
                            defaultRoute='via 192.168.1.1' )
